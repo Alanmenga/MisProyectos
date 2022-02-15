@@ -1,0 +1,19 @@
+<div class="col animated fadeIn fast" >
+    <div class="card" >
+      <!-- <img src="{{heroe.img}}" class="card-img-top" alt="..."> -->
+      <img [src]="heroe.img" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ heroe.nombre }}</h5>
+        <p class="card-text"> {{ heroe.bio }}</p>
+        <p class="card-text"> {{ heroe.aparicion }}</p>
+
+        <div class="d-grid gap-2">
+            <button (click)="verHeroe()" type="button" class="btn btn-dark">
+                Ver más...
+            </button>
+            <!-- <a [routerLink]="['/heroe',i]" class="btn btn-dark">Ver más link...</a> -->
+
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,116 @@
+<h1 class="mt-3">Pipes <FONT SIZE=3>Angular</FONT></h1>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <table class="table">
+            <thead class="table table-dark">
+                <tr>
+                    <th>Variable</th>
+                    <th>Pipe</th>
+                    <th>Salida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Uppercase -->
+                <tr>
+                    <td> {{ nombre }} </td>
+                    <td> uppercase </td>
+                    <td> {{ nombre | uppercase }} </td>
+                </tr>
+                <!-- Lowercase -->
+                <tr>
+                    <td> {{ nombre }} </td>
+                    <td> lowercase </td>
+                    <td> {{ nombre | lowercase }} </td>
+                </tr>
+                <!-- Slice -->
+                <tr>
+                    <td> {{ nombre }} </td>
+                    <td> slice:3 </td>
+                    <td> {{ nombre | slice:3 }} </td>
+                </tr>
+                <tr>
+                    <td> {{ nombre }} </td>
+                    <td> slice:0:3 </td>
+                    <td> {{ nombre | slice:0:3 }} </td>
+                </tr>
+                <tr>
+                    <td> {{ arreglo }} </td>
+                    <td> slice:1:5 </td>
+                    <td> {{ arreglo | slice:1:5 }} </td>
+                </tr>
+
+                <!-- Decimal -->
+                <tr>
+                    <td> {{ PI }} </td>
+                    <td> number:'3.0-0' </td>
+                    <td> {{ PI | number:'3.0-0' }} </td>
+                </tr>
+                <tr>
+                    <td> {{ PI }} </td>
+                    <td> number:'.0-2' </td>
+                    <td> {{ PI | number:'.0-2' }} </td>
+                </tr>
+
+                <!-- Porcentaje -->
+                <tr>
+                    <td> {{ porcentaje }} </td>
+                    <td> percent </td>
+                    <td> {{ porcentaje | percent }} </td>
+                </tr>
+                <tr>
+                    <td> {{ porcentaje }} </td>
+                    <td> percent:'2.2-2' </td>
+                    <td> {{ porcentaje | percent:'2.2-2' }} </td>
+                </tr>
+
+                <!-- Currency -->
+                <tr>
+                    <td> {{ salario }} </td>
+                    <td> currency </td>
+                    <td> {{ salario | currency }} </td>
+                </tr>
+                <tr>
+                    <td> {{ salario }} </td>
+                    <td> currency:'EUR' </td>
+                    <td> {{ salario | currency:'EUR' }} </td>
+                </tr>
+                <tr>
+                    <td> {{ salario }} </td>
+                    <td> currency:'CAD ':'symbol-narrow':'.0-0' </td>
+                    <td> {{ salario | currency:'CAD ':'symbol-narrow':'.0-0' }} </td>
+                </tr>
+
+                <!-- Async -->
+                <tr>
+                    <td> {{ valorPromesa }} </td>
+                    <td> async </td>
+                    <td> {{ valorPromesa }} </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+        <h4>Slice <FONT SIZE=2>(slice:5:20)</FONT></h4>
+        <ul>
+            <li *ngFor="let item of arreglo | slice:5:20"> {{ item }} </li>
+        </ul>
+
+        <h3>JSON</h3>
+        <hr>
+        <div class="row mb-5">
+            <div class="col">
+                <pre>
+                    {{ heroe | json }}
+                </pre>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
