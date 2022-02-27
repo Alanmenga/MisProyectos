@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'testing';
+
+  par( numero:number ):boolean{
+    return numero%2 === 0 ? true : false;
+  }
 }
