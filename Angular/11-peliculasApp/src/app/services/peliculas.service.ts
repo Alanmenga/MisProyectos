@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { CarteleraResponse, Movie } from '../interfaces/cartelera-response';
+import { Cast, CreditsResponse } from '../interfaces/credits-response';
+import { MovieResponse } from '../interfaces/movie-response';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,7 @@ export class PeliculasService {
   get params() {
     return {
       api_key: '1c888ae8722ee55c77ae8acfbd0d1bb7',
-      lenguage: 'es',
+      lenguage: 'en-US',
       page: this.carteleraPage.toString()
     }
   }
@@ -45,7 +47,7 @@ export class PeliculasService {
   }
 
   buscarPeliculas( texto: string ): Observable<Movie[]> {
-    //https://api.themoviedb.org/3/search/movie?api_key=1c888ae8722ee55c77ae8acfbd0d1bb7&language=es&page=1&include_adult=true
+    //https://api.themoviedb.org/3/search/movie?api_key=1c888ae8722ee55c77ae8acfbd0d1bb7&language=en-US&page=1&include_adult=true
     const params = { ...this.params, page: '1', query: texto };
     return this.http.get<CarteleraResponse>(`${ this.baseUrl }/search/movie`, {
       params
@@ -54,6 +56,24 @@ export class PeliculasService {
     )
   }
 
+  getPeliculaDetail( id: string ) {
+    //https://api.themoviedb.org/3/movie/24428?api_key=1c888ae8722ee55c77ae8acfbd0d1bb7&language=en-US
+    return this.http.get<MovieResponse>(`${ this.baseUrl }/movie/${ id }`,{
+      params: this.params
+    }).pipe(
+      catchError( err => of(null) )
+    );
+  }
+
+  getCast( id:string ): Observable<Cast[]> {
+    //https://api.themoviedb.org/3/movie/24428/credits?api_key=1c888ae8722ee55c77ae8acfbd0d1bb7&language=en-US
+    return this.http.get<CreditsResponse>(`${ this.baseUrl }/movie/${ id }/credits`,{
+      params: this.params
+    }).pipe(
+      map( resp => resp.cast ),
+      catchError( err => of([]) )
+    );
+  }
 
 
 }
