@@ -1,2 +1,10 @@
-package com.manytoone.services;public interface CategoriaService {
+package com.manytoone.services;
+
+import com.manytoone.models.Categoria;
+import java.util.List;
+
+public interface CategoriaService {
+
+    public List<Categoria> findAll();
+
 }

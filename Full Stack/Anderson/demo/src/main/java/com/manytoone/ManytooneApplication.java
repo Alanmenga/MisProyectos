@@ -1,4 +1,4 @@
-package com.manytoone.demo;
+package com.manytoone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
