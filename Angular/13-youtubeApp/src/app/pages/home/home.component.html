@@ -1,0 +1,32 @@
+
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
+  <div class="col" *ngFor="let video of videos">
+    <div class="card animated fadeIn">
+      <img [src]="video.thumbnails.high.url" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ video.title }}</h5>
+        <p class="card-text">
+            <strong>Autor: </strong>{{ video.channelTitle }}
+        </p>
+        <p class="card-text">
+          <strong>Publicado:  </strong>{{ video.publishedAt | date}}
+        </p>
+        <div class="d-grid gap-2">
+          <button class="btn btn-danger"
+                  (click)="mostrarVideo( video )">
+            Ver video
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5 mb-5 text-center">
+  <div class="col">
+    <button class="btn btn-danger btn-lg"
+            (click)="cargarVideos()">
+      Siguiente página
+    </button>
+  </div>
+</div>
