@@ -1,0 +1,5 @@
+Primero merge a dev
+
+Luego new merge request de dev a master 
+
+Despues hacer el tag a qat
