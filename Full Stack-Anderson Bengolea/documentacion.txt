@@ -1,6 +1,0 @@
-"Angular + Springboot + MySQL + Bootstrap + TUTORIAL API + MANYTOONE"
-youtube.com/watch?v=1C_yC9GPlfQ&list=WL&index=35&t=55s
-
-
-Se inicializa el proyecto con Spring Initializr con dependencias de
-Spring Web, Spring Data JPA, MySQL Driver
