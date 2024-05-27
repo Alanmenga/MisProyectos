@@ -1,0 +1,94 @@
+------------- Sección 2: Introduccion a Redux -------------
+Clase 9 (Que es Redux):
+Patron para el manejo de la aplicacion
+Toda la data de la aplicacion esta definida en Store, ese nunca se modificara de forma directa
+Un nuevo estado es creado de la combinacion del viejo estado y una accion llamada Reducer
+
+Clase 10 (Action, reducer, store, state) :
+Action: es la unica fuente de informacion que se envia por interacciones de usuario o programa
+Reducer: es una funcion que unicamente recibe 2 argumentos( oldState y action) y siempre retorna un estado
+State: es solo de lectura, nunca se mutara de forma directa 
+Store: es un objeto que tiene las siguientes responsabilidades
+		-Permite la lectura del estado via: getState()
+		-Permite crear un nuevo estado utilizando: dispatch(action)
+		-Permite notificar cambios de estado via subscribe()
+
+
+------------- Sección 4: NGRX: Redux con Angular -------------
+
+Clase 31 (Create reducer): 
+mejoramos la funcion contadorReducer del archivo contador.reducer.ts, cambiando 
+el switch por una constante y una funcion que llama a esa constante haciendo el cambio del estado.
+
+Clase 32 (Store en el componente hijo): 
+le sacamos los argumentos(evento y cambiar el contador) que le estamos 
+pasando del app.component al hijo.component. 
+Creamos interfaz aparte para el AppState y cambimos los parametros del constructor del hijo y app
+component
+En el componente hijo nos suscribimos al store.select para que el contador este sencronizado con
+app component
+
+Clase 33 (Creando accion de multiplicar y dividir): 
+se agrega la accion multiplicar en el contador.actions.ts
+Se agrego la acion en el contador.reducer.ts
+Agrego el dispatch en el hijo component importando el action multiplicar de contador.actions
+Se hace lo mismo con la accion de dividir
+
+Claro 34 (Action reset del nieto):
+Se crea la accion reset y se la implementa en el componente nieto
+
+------------- Sección 5: NGRX: Todo App - aplicacion estado mas complejo -------------
+
+Clase 39 (Inicio proyecto TodoApp): 
+Inicializamos el proyecto y le instalamos la interfaz
+
+Clase 40 (Configuraciones iniciales)
+
+Clase 41 (Creando los componentes):
+Creamos un modulo dentro de la carpeta app, en una carpeta llamada "todos"
+Creamos el componente footer dentro de app
+Creamos un componente llamado "todo-add" dentro de app, dentro de "todos"
+Creamos un componente llamado "todo-footer" dentro de app, dentro de "todos"
+Creamos un componente llamado "todo-item" dentro de app, dentro de "todos"
+Creamos un componente llamado "todo-page" dentro de app, dentro de "todos"
+
+Clase 42 (Estructura de la aplicacion): 
+Repartimos toda la vista en diferentes componentes para que quede todo modularizado
+
+Clase 43 (Instalar NgRx): 
+Me creo un modelo de tareas con las siguientes variables: id(fecha), texto, completado
+Instalo ngrx con el comando "npm install @ngrx/store --save
+Creo el archivo de las acciones(todo.actions.ts) en donde creamos la funcion "createAction"
+Creo el archivo reducer(todo.reducer.ts) en donde llamamos al metodo crear de las acciones
+Importamos "StoreModule" de "@ngrx/store" y "StoreModule.forRoot({ count: todoReducer})" en la parte
+de imports
+
+-------------------ERROR----------------------------
+Error: node_modules/@ngrx/store/src/models.d.ts:1:15 - error TS2305: Module '"@angular/core"' 
+has no exported member 'ValueEqualityFn'.
+
+este error era por que las versiones de angular que manejo son 14 y la version de ngrx/store era 16
+se soluciono bajando a la 14 el ngrx
+----------------------------------------------------
+
+Clase 44 (Definiendo el AppState de nuestra aplicación):
+Hacemos la instalacion de las devTools con "npm i @ngrx/store-devtools --save" (revisar que sea 14.0.0)
+Importamos "StoreDevtoolsModule" de "@ngrx/store-devtools"
+Creo el "app.reducer.ts" dentro de la carpeta "app" en donde creamos la interface "AppState"
+
+Clase 45 (Agregar un TODO):
+Vamos a trabajar con formularios reactivos
+Importamos "ReactiveFormsModule" de "@angular/forms" en el app.module
+El todo.module.ts no sabe lo que pasa por fuera de el, entonces importamos 
+ahi tambien los form reactivos
+Hacemos la logica el input para agregar tareas
+En el constructor declaro "private store: Store<AppState>" 
+y en la funcion agregar() declaro el "this.store.dispatch() a la cual le paso la accion de crear
+actions.crear({ texto: this.txt.Input.value })
+Agrego this.txtInput.reset() para que cuando agrege se borre el input
+
+Clase 46(Desplegar nuestra lista de TODOS):
+
+
+
+
